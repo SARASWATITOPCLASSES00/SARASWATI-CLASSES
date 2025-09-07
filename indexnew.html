@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Saraswati Classes - Registration</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <div class="brand">
+      <div class="logo">SC</div>
+      <h1>Saraswati Classes</h1>
+    </div>
+
+    <div class="card">
+      <h2 style="margin-bottom:12px;">Registration Form</h2>
+
+      <form id="myForm">
+        <div class="form-grid">
+          <div>
+            <label>Full Name</label>
+            <input type="text" name="name" required>
+          </div>
+          <div>
+            <label>Father Name</label>
+            <input type="text" name="fathername" required>
+          </div>
+        </div>
+
+        <div class="form-grid">
+          <div>
+            <label>Email</label>
+            <input type="email" name="email" required>
+          </div>
+          <div>
+            <label>Mobile</label>
+            <input type="text" name="mobile" required>
+          </div>
+        </div>
+
+        <div class="form-grid">
+          <div>
+            <label>DOB</label>
+            <input type="date" name="dob" required>
+          </div>
+          <div>
+            <label>Gender</label>
+            <select name="gender" required>
+              <option value="">Select</option>
+              <option>Male</option>
+              <option>Female</option>
+            </select>
+          </div>
+        </div>
+
+        <label>Address</label>
+        <input type="text" name="address" required>
+
+        <div class="form-grid" style="margin-top:12px;">
+          <div>
+            <label>Qualification</label>
+            <input type="text" name="qualification" required>
+          </div>
+          <div>
+            <label>Aadhaar Number</label>
+            <input type="text" name="aadhar" required>
+          </div>
+        </div>
+
+        <div style="margin-top:16px; display:flex; gap:12px;">
+          <button class="btn btn-primary" type="submit">Submit & Proceed</button>
+          <button class="btn btn-outline" type="reset">Reset</button>
+        </div>
+<br>
+        <p>Next Page Open hone mein 10-15 second lag sakti hai toh baar baar Submit Button Pe click na kare</p>
+      </form>
+
+      <p class="footer-note">All data is kept private. Payments done after registration only.</p>
+    </div>
+
+    <div class="payment-card">
+      <div class="card" style="width:100%; text-align:center;">
+        <h3 style="margin-bottom:8px;">Pay ₹100 to Complete</h3>
+        <p class="helper">Scan the QR or pay via UPI and paste the UTR below on next screen.</p>
+        <div class="qr-box" style="margin:14px auto;">
+          <img src="Qr.jpeg" alt="QR">
+        </div>
+        <p class="helper">UPI ID: <b>7302522629@ptaxis</b></p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const scriptURL = "https://script.google.com/macros/s/AKfycbyoBgYVL1XcIx_VoaSg6dZbfAD39guyM_rVQwQa67EHpHj-Ul5LIzOKKi7ffzINg4sL/exec";
+
+    document.getElementById("myForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+      fetch(scriptURL, { method: "POST", body: new FormData(this) })
+        .then(res => res.json ? res.json() : res.text())
+        .then(data => {
+          // support both JSON and plain text responses
+          const ok = (data && data.status === "success") || (typeof data === 'string' && data.toLowerCase().includes('success'));
+          if (ok) {
+            window.location.href = "payment.html";
+          } else {
+            alert("Submission failed. Check console for details.");
+            console.log("Response:", data);
+          }
+        })
+        .catch(err => {
+          console.error("Error!", err);
+          alert("Error submitting form. Open console for details.");
+        });
+    });
+  </script>
+</body>
+</html>

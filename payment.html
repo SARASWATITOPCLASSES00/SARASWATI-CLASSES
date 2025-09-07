@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Payment - Saraswati Classes</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container" style="grid-template-columns:1fr; max-width:720px;">
+    <div class="brand" style="justify-content:center;"><div class="logo">SC</div><h1>Saraswati Classes</h1></div>
+
+    <div class="card" style="text-align:center;">
+      <h2>Complete Your Payment</h2>
+      <p class="helper">Pay ₹100 using UPI or QR. Then paste the Transaction/UTR ID below.</p>
+
+      <div class="qr-box" style="margin:10px auto;">
+        <img src="Qr.jpeg" alt="QR">
+      </div>
+
+      <p style="margin-top:6px;"><b>UPI ID:</b> 7302522629@ptaxis</p>
+
+      <div style="margin-top:12px;">
+        <input id="utr" type="text" placeholder="Enter Transaction ID / UTR" />
+      </div>
+
+      <div style="margin-top:12px; display:flex; gap:10px; justify-content:center;">
+        <button class="btn btn-outline" onclick="verifyPayment()">Verify</button>
+        <button id="registerBtn" class="btn btn-primary" disabled onclick="completeRegistration()">Register</button>
+      </div>
+
+      <p id="status" style="margin-top:10px;"></p>
+    </div>
+    <p class="footer-note">Pahle Payment Verify Pe click kare phir register pe click kare!</p>
+    <p class="footer-note">If you face any issues, take screenshot and contact: 7310506567</p>
+  </div>
+
+  <script>
+    function verifyPayment(){
+      const utr = document.getElementById('utr').value.trim();
+      const status = document.getElementById('status');
+      const btn = document.getElementById('registerBtn');
+      if(utr.length >= 6){
+        status.innerText = "✅ Payment Verified";
+        status.style.color = "var(--success)";
+        btn.disabled = false;
+      } else {
+        status.innerText = "❌ Enter a valid Transaction ID (min 6 chars)";
+        status.style.color = "var(--danger)";
+        btn.disabled = true;
+      }
+    }
+    function completeRegistration(){
+      // Redirect to thankyou page. You can also call server to mark payment done.
+      window.location.href = "thankyou.html";
+    }
+  </script>
+</body>
+</html>
