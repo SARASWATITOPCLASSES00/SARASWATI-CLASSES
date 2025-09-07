@@ -100,7 +100,7 @@ p{
 }
 
 .same{
-    margin: 0px 150px 0px 150px;
+    margin: 0px 70px 0px 70px;
     color: black;
     font-size: 30px;
 
@@ -179,3 +179,37 @@ p{
   height: 42px;
   padding-top: 12px;
 }
+
+#jobfair {
+  /* Stylish Lighting Button */
+
+  position: relative;
+  bottom: 7px;
+  padding: 12px 28px;
+  font-size: 18px;
+  font-weight: bold;
+  color: #fff;
+  background: linear-gradient(45deg, #ff512f, #dd2476, #24c6dc, #514a9d);
+  background-size: 300% 300%;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  text-transform: uppercase;
+  transition: all 0.4s ease-in-out;
+  box-shadow: 0 0 15px rgba(0,0,0,0.3);
+  animation: gradientShift 6s ease infinite;
+}
+
+/* Gradient animation */
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Hover effect */
+.btn-light:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 25px #ff4fd8, 0 0 50px #24c6dc, 0 0 75px #ff512f;
+}
+
