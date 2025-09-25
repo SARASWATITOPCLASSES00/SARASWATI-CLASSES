@@ -81,12 +81,11 @@
 
     <div class="payment-card">
       <div class="card" style="width:100%; text-align:center;">
-        <h3 style="margin-bottom:8px;">Pay ₹100 to Complete</h3>
-        <p class="helper">Scan the QR or pay via UPI and paste the UTR below on next screen.</p>
-        <div class="qr-box" style="margin:14px auto;">
-          <img src="Qr.jpeg" alt="QR">
+    
+       
+          
         </div>
-        <p class="helper">UPI ID: <b>7302522629@ptaxis</b></p>
+       
       </div>
     </div>
   </div>
@@ -102,7 +101,7 @@
           // support both JSON and plain text responses
           const ok = (data && data.status === "success") || (typeof data === 'string' && data.toLowerCase().includes('success'));
           if (ok) {
-            window.location.href = "payment.html";
+            window.location.href = "docs.html";
           } else {
             alert("Submission failed. Check console for details.");
             console.log("Response:", data);
@@ -116,3 +115,4 @@
   </script>
 </body>
 </html>
+
